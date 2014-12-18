@@ -1,17 +1,18 @@
 require 'json'
 
-file = File.read('grades.json')
-
-data_hash = JSON.parse(file)
+file = File.read("../data/grades.json")
+grades = JSON.parse(file)
 
 index = 0
-
 differences = []
+count = 0
+ind = 0
 
-  while index < (array.length - 1)
-    if array[index] < array[index + 1]
+grades.each do |array|
+  while index < (array[1].length - 1)
+    if array[1][index] < array[1][index + 1]
       differences << :up
-    elsif array[index] > array[index + 1]
+    elsif array[1][index] > array[1][index + 1]
       differences << :down
     else
       differences << :even
@@ -19,10 +20,9 @@ differences = []
     index += 1
   end
   #
-  p differences
+  # p differences
 
-count = 0
-ind = 0
+
 while ind < (differences.length)
   if differences[ind] == :down
     count += 1
@@ -38,4 +38,9 @@ if count >= 3
   puts "in decline"
 else
   puts "not in decline"
+end
+index = 0
+differences = []
+count = 0
+ind = 0
 end
